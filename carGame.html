@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Car Game</title>
+</head>
+<body>
+
+<h1>Car Game</h1>
+<p>Press "h" to honk, "d" to drive to work, "w" to drive around the world, or "t" to get a tuneup.</p>
+<p>See console for car stats.</p>
+
+<script>
+
+	var car = {
+		make: "Honda",
+		model: "Fit",
+		color: "Blue Rasberry",
+		mileage: 3000,
+		isWorking: true,
+
+		driveToWork: function(){
+
+			alert("Old Mileage: " + this.mileage)
+			
+			this.mileage = this.mileage + 8;
+			
+			alert("New mileage: " + this.mileage);
+		},
+
+		driveAroundWorld: function(){
+
+			alert("Old Mileage: " + this.mileage);
+
+			this.mileage = this.mileage + 24000;
+
+			alert("New Mileage: " + this.mileage);
+			alert("Car needs a tuneup!")
+
+			this.isWorking = false;
+		},
+
+		getTuneUp: function(){
+			alert("Car is ready to go!");
+			this.isWorking = true;
+		},
+
+		honk: function(){
+			alert("Meeeeeeeeowwwww")
+		}
+	}
+
+	function reWriteStats() {
+		console.log("Make: " + car.make);
+		console.log("Model: " + car.model);
+		console.log("Color: " + car.color);
+		console.log("Mileage: " + car.mileage);
+		console.log("Is Working: " + car.isWorking);
+	}
+	
+	// Create an array that lists out all of the options
+	var options = ['h','d','w', 't'];
+
+	// Captures Key Clicks
+	document.onkeyup = function(event) {
+
+		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+		if(userGuess == 'h') {
+			car.honk();
+			reWriteStats();
+		}
+
+		if(userGuess == 'd') {
+			car.driveToWork();
+			reWriteStats();
+		}
+		
+		if(userGuess == 'w') {
+			car.driveAroundWorld();
+			reWriteStats();
+		}
+		
+		if(userGuess == 't') {
+			car.getTuneUp();
+			reWriteStats();
+		}
+	}
+
+</script>
+	
+</body>
+</html>
